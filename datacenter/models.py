@@ -1,4 +1,7 @@
+from datetime import timedelta
+
 from django.db import models
+from django.utils.timezone import localtime
 
 
 class Passcard(models.Model):
@@ -28,3 +31,19 @@ class Visit(models.Model):
                 if self.leaved_at else 'not leaved'
             )
         )
+
+    def get_duration(self):
+        if self.leaved_at:
+            time_inside = self.leaved_at - self.entered_at
+        else:
+            time_inside = localtime() - self.entered_at
+        return time_inside.seconds
+
+    def format_duration(self):
+        return str(timedelta(seconds=self.get_duration()))
+
+    def is_long(self, minutes=60):
+        if self.get_duration() > minutes * 60:
+            return True
+        if self.get_duration() < minutes * 60:
+            return False
