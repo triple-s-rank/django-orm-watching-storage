@@ -11,14 +11,14 @@ def format_duration(duration):
 
 def storage_information_view(request):
 
-    visits = Visit.objects.filter(leaved_at__isnull=True)
+    open_visits = Visit.objects.filter(leaved_at__isnull=True)
 
-    non_closed_visits = [
+    serialized_visits = [
         {'who_entered': visit.passcard,
          'entered_at': visit.entered_at,
-         'duration': format_duration(visit.get_duration())} for visit in visits
+         'duration': format_duration(visit.get_duration())} for visit in open_visits
     ]
     context = {
-        'non_closed_visits': non_closed_visits,
+        'non_closed_visits': serialized_visits,
     }
     return render(request, 'storage_information.html', context)
