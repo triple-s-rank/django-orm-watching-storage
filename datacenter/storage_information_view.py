@@ -16,6 +16,7 @@ def storage_information_view(request):
     serialized_visits = [
         {'who_entered': visit.passcard,
          'entered_at': visit.entered_at,
+         'is_strange': visit.is_long(),
          'duration': format_duration(visit.get_duration())} for visit in open_visits
     ]
     context = {
