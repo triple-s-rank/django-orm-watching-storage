@@ -43,7 +43,4 @@ class Visit(models.Model):
         return str(timedelta(seconds=self.get_duration()))
 
     def is_long(self, minutes=60):
-        if self.get_duration() > minutes * 60:
-            return True
-        if self.get_duration() < minutes * 60:
-            return False
+        return self.get_duration() >= minutes * 60
