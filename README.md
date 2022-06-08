@@ -26,13 +26,45 @@ and define all personal database and secret key options of your porject in envir
 
 ```ALLOWED_HOSTS=[127.0.0.1,localhost]``` list of allowed hosts. 
 
+```DEBUG=True``` swap to True for production purposes.
+
+```SECRET_KEY=USE_YOUR_SECRET_KEY``` secret key of project. Setup before running in production.
+
+
 
 
 You can see example in [example.env](https://github.com/triple-s-rank/django-orm-watching-storage/blob/master/project/example.env) file:
 ```
-PORT = 8000
+SECRET_KEY=USE_YOUR_SECRET_KEY
+DB_URL=postgres://USER:PASSWORD@HOST:PORT/NAME
+DEBUG=True
+ALLOWED_HOSTS=[127.0.0.1,localhost]
 ```
-More information about [dotenv lib](https://pypi.org/project/python-dotenv/) and how it works you can find on its page.
+More information about [environs lib](https://pypi.org/project/environs/) and how it works.
+
+### Running
+To run enter command in manage.py directory
+```$ python manage.py runserver 0.0.0.0:8000```
+
+Than put url ```http://127.0.0.1:8000/``` (by default) in your browser.
+
+## How it works
+
+datacenter\models.py contents orm models:
+
+- Passcard models- passcard information.
+- Visit models - storage visits information.
+- Method is_visit_long of Visit object and returns boolean. Shows if visit is suspicious (by default suspicious will be 60 and more minutes)
+- Method get_duration of Visit object returns timedelta object of visit duration.
+- Method format_duration of Visit object converts timedelta in readable HH:MM:SS
+
+datacenter\active_passcards_view.py shows list of active passcards.
+
+datacenter\storage_information_view.py shows list of employees who are in storage now.
+
+datacenter\passcard_info_view.py shows visit history of employee.
+
+datacenter\templates\ HTML templates.
 
 ## Projects Goal
 
