@@ -1,23 +1,23 @@
 import os
-from dotenv import load_dotenv
 import dj_database_url
 from environs import Env
 
-load_dotenv()
+
+env = Env()
+env.read_env()
 
 DATABASES = {
-    'default': dj_database_url.parse(os.getenv('DB_URL'))
+    'default': dj_database_url.parse(env('DB_URL'))
  }
 
 INSTALLED_APPS = ['datacenter']
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = Env().bool('DEBUG')
-
+DEBUG = env.bool('DEBUG')
 ROOT_URLCONF = 'project.urls'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
+ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
