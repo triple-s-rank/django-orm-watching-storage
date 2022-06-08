@@ -19,15 +19,16 @@ pip install -r requirements.txt
 ### Environment variables
 .env variables are used for security purposes in this project.
 
-Отредактируйте .env для необходимых настроек:
-
-DB_URL=postgres://USER:PASSWORD@HOST:PORT/NAME настройка подключения к БД.
-ALLOWED_HOSTS=127.0.0.1,localhost lists of hosts, для которых может работать текущий сайт. 
-
-
 To setup them you should create .env file in your settings.py directory
-and define all personal database and secret key options of your porject in environment (.env) file.
-For example:
+and define all personal database and secret key options of your porject in environment (.env) file.:
+
+```DB_URL=postgres://USER:PASSWORD@HOST:PORT/NAME``` for DataBase settings.
+
+```ALLOWED_HOSTS=[127.0.0.1,localhost]``` list of allowed hosts. 
+
+
+
+You can see example in [example.env](https://github.com/triple-s-rank/django-orm-watching-storage/blob/master/project/example.env) file:
 ```
 PORT = 8000
 ```
