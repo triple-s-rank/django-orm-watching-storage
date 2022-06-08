@@ -16,8 +16,14 @@ Then use pip (or pip3, if there is a conflict with Python2) to install dependenc
 ```
 pip install -r requirements.txt
 ```
-
+### Environment variables
 .env variables are used for security purposes in this project.
+
+Отредактируйте .env для необходимых настроек:
+
+DB_URL=postgres://USER:PASSWORD@HOST:PORT/NAME настройка подключения к БД.
+ALLOWED_HOSTS=127.0.0.1,localhost lists of hosts, для которых может работать текущий сайт. 
+
 
 To setup them you should create .env file in your settings.py directory
 and define all personal database and secret key options of your porject in environment (.env) file.
