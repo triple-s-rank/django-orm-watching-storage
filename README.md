@@ -1,4 +1,4 @@
-
+[![Latest version](https://badgen.net/pypi/v/environs)](https://pypi.org/project/environs/)
 # Bank Security Console
 
 Simple django-based security console.
