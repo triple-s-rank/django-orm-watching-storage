@@ -1,4 +1,4 @@
-[![devman](https://badgen.net/badge/icon/awesome?icon=awesome&label)](https://dvmn.org/)
+[![](https://badgen.net/badge/icon/awesome?icon=awesome&label)](https://dvmn.org/)
 # Bank Security Console
 
 Simple django-based security console.
